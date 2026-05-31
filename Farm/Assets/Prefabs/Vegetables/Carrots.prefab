@@ -65,7 +65,7 @@ MonoBehaviour:
   - {fileID: 21300018, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
   - {fileID: 21300094, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
   _currentCooldownTime: -0.0032824902
-  _stateCooldownTime: 5
+  _stateCooldownTime: 3
   _totalCooldownTime: 0
 --- !u!114 &7037973242791447251
 MonoBehaviour:
