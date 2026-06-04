@@ -11,15 +11,45 @@ public enum PlotState
 public class GameController : MonoBehaviour
 {
 	#region Properties
+	public Plot[] GardenPlots { get; set; } = new Plot[54];
+
+	public int Money
+	{
+		get { return _money; }
+		set
+		{
+			if (value <= 0)
+			{
+				_money = 0;
+				_uiMoneyController.UpdateMoneyDisplay(_money);
+				return;
+			}
+			if (value > 0)
+			{
+				_money = value;
+				_uiMoneyController.UpdateMoneyDisplay(_money);
+				return;
+			}
+
+		}
+	}
+
 	#endregion
 
 	#region Fields
+	private UIMoneyController _uiMoneyController;
+
+	[SerializeField] private int _money;
+
 	#endregion
 
 	#region Unity Callbacks
 	void Awake()
 	{
+		_uiMoneyController = FindObjectOfType<UIMoneyController>();
+		GardenPlots = FindObjectsOfType<Plot>();
 
+		_uiMoneyController.UpdateMoneyDisplay(_money);
 	}
 
 	void Update()

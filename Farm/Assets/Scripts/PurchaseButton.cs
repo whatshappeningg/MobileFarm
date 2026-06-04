@@ -19,10 +19,10 @@ public class PurchaseButton : MonoBehaviour
 
 	#region Fields
 	private GameController _gameController;
-	private Button _purchaseButton;
+	private Toggle _purchaseToggle;
 	private TMP_Text _priceText;
-	[SerializeField] private int _price; // Este valor es negativo
-	private int _absolutePrice;
+	private int _negativePrice; // Este valor es negativo
+	[SerializeField] private int _price;
 	private Color _defaultColor;
 	#endregion
 
@@ -30,28 +30,33 @@ public class PurchaseButton : MonoBehaviour
 	void Awake()
 	{
 		_gameController = FindObjectOfType<GameController>();
-		_purchaseButton = GetComponentInChildren<Button>();
+		_purchaseToggle = GetComponentInChildren<Toggle>();
 		_priceText = GetComponentInChildren<TMP_Text>();
 
-		_purchaseButton.onClick.AddListener(ButtonSelected);
-		_absolutePrice = Math.Abs(_price);
+		//_purchaseToggle.onValueChanged.AddListener(ToggleSelected);
+		_negativePrice = -_price;
 
 	}
 
 	void Start()
 	{
-		_absolutePrice = int.Parse(_priceText.text);
+		_price = int.Parse(_priceText.text);
 		_defaultColor = _priceText.color;
 
 	}
 
 	void Update()
 	{
-		if (_gameController.Money < _absolutePrice)
+		if (_gameController.Money < _price)
 			OnCantPurchase();
 		else
 			OnCanPurchase();
 
+		if (_purchaseToggle.isOn)
+		{
+			ToggleSelected();
+			//_purchaseToggle.isOn = false; // Resetea el toggle después de la compra
+		}
 	}
 	#endregion
 
@@ -62,18 +67,18 @@ public class PurchaseButton : MonoBehaviour
 	private void OnCantPurchase()
 	{
 		_priceText.color = Color.red;
-		_purchaseButton.interactable = false;
+		_purchaseToggle.interactable = false;
 
 	}
 	private void OnCanPurchase()
 	{
 		_priceText.color = _defaultColor;
-		_purchaseButton.interactable = true;
+		_purchaseToggle.interactable = true;
 
 	}
-	private void ButtonSelected()
+	private void ToggleSelected()
 	{
-		_gameController.Money -= _price;
+		//_gameController.Money += _negativePrice;
 		// OnButtonSelected?.Invoke(); // Envía TypeOfPurchase
 
 	}
