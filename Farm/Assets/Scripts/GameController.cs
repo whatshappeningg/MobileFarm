@@ -11,7 +11,6 @@ public enum PlotState
 public class GameController : MonoBehaviour
 {
 	#region Properties
-	public Plot[] GardenPlots { get; set; } = new Plot[54];
 
 	public int Money
 	{
@@ -47,7 +46,6 @@ public class GameController : MonoBehaviour
 	void Awake()
 	{
 		_uiMoneyController = FindObjectOfType<UIMoneyController>();
-		GardenPlots = FindObjectsOfType<Plot>();
 
 		_uiMoneyController.UpdateMoneyDisplay(_money);
 	}

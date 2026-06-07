@@ -5,11 +5,12 @@ using UnityEngine.UI;
 public class Plot : MonoBehaviour
 {
 	#region Properties
-	public PlotState CurrentState { get; set; }
+	[field: SerializeField] public PlotState CurrentState { get; set; }
+	public Button PlotButton { get; set; }
+	[field: SerializeField] public GameObject BloquedButton { get; set; }
 	#endregion
 
 	#region Fields
-	private Button _plotButton;
 
 	#endregion
 
@@ -17,12 +18,8 @@ public class Plot : MonoBehaviour
 	void Awake()
 	{
 		CurrentState = PlotState.Empty;
-		_plotButton = GetComponent<Button>();
-	}
-
-	void Update()
-	{
-
+		PlotButton = GetComponent<Button>();
+		// BloquedButton = GameObject.FindFirstObjectByType<BloquedPlot Image>().gameObject;
 	}
 	#endregion
 
@@ -31,8 +28,7 @@ public class Plot : MonoBehaviour
 	{
 		CurrentState = PlotState.Planted;
 		Instantiate(vegetablePrefab, transform.position, Quaternion.identity, transform);
-		_plotButton.interactable = false;
-
+		PlotButton.interactable = false;
 	}
 
 	#endregion

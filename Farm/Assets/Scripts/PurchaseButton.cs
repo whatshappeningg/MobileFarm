@@ -13,11 +13,12 @@ public class PurchaseButton : MonoBehaviour
 		WateringCan
 	}
 	[field: SerializeField] public PurchaseType TypeOfPurchase;
-	public event Action OnButtonSelected;
+	//public event Action OnToggleSelected;
 
 	#endregion
 
 	#region Fields
+	private ToggleSelectionManager _toggleSelectionManager;
 	private GameController _gameController;
 	private Toggle _purchaseToggle;
 	private TMP_Text _priceText;
@@ -29,11 +30,12 @@ public class PurchaseButton : MonoBehaviour
 	#region Unity Callbacks
 	void Awake()
 	{
+		_toggleSelectionManager = FindObjectOfType<ToggleSelectionManager>();
 		_gameController = FindObjectOfType<GameController>();
 		_purchaseToggle = GetComponentInChildren<Toggle>();
 		_priceText = GetComponentInChildren<TMP_Text>();
 
-		//_purchaseToggle.onValueChanged.AddListener(ToggleSelected);
+		_purchaseToggle.onValueChanged.AddListener(ToggleSelected);
 		_negativePrice = -_price;
 
 	}
@@ -52,11 +54,11 @@ public class PurchaseButton : MonoBehaviour
 		else
 			OnCanPurchase();
 
-		if (_purchaseToggle.isOn)
-		{
-			ToggleSelected();
-			//_purchaseToggle.isOn = false; // Resetea el toggle después de la compra
-		}
+		// if (_purchaseToggle.isOn)
+		// {
+		// 	ToggleSelected();
+		// 	_purchaseToggle.isOn = false; // Resetea el toggle después de la compra
+		// }
 	}
 	#endregion
 
@@ -76,10 +78,15 @@ public class PurchaseButton : MonoBehaviour
 		_purchaseToggle.interactable = true;
 
 	}
-	private void ToggleSelected()
+	private void ToggleSelected(bool isOn)
 	{
 		//_gameController.Money += _negativePrice;
-		// OnButtonSelected?.Invoke(); // Envía TypeOfPurchase
+		//OnToggleSelected?.Invoke(); // Envía TypeOfPurchase
+		if (isOn)
+			_toggleSelectionManager.OnToggleSelected(this);
+		else
+			_toggleSelectionManager.OnToggleDeselected();
+		//Debug.Log($"{TypeOfPurchase} toggle selected");
 
 	}
 	#endregion
