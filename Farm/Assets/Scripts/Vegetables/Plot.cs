@@ -34,14 +34,13 @@ public class Plot : MonoBehaviour
 	#region Public Methods
 	public void OnPlotButtonClicked()
 	{
-		Debug.Log("Plot button clicked. Current state: " + CurrentState);
 		_currentSelectedPurchaseButton = _toggleSelectionManager.CurrentSelectedButton;
+
 		if (_currentSelectedPurchaseButton == null)
 			return;
 
 		if (_currentSelectedPurchaseButton.TypeOfPurchase == PurchaseButton.PurchaseType.Seed)
 		{
-			Debug.Log("Planting vegetable: " + _currentSelectedPurchaseButton.PrefabToSpawn.name);
 			PlantVegetable(_currentSelectedPurchaseButton.PrefabToSpawn);
 			return;
 		}
@@ -66,19 +65,11 @@ public class Plot : MonoBehaviour
 		CurrentState = PlotState.Planted;
 		_plantedVegetable = Instantiate(vegetablePrefab, transform.position, Quaternion.identity, transform);
 		_plantedVegetable.transform.SetAsLastSibling();
-		PlotButton.interactable = false;
-	}
-	private void HarvestVegetable()
-	{
-		if (CurrentState != PlotState.ReadyToHarvest)
-			return;
 
-		CurrentState = PlotState.Empty;
-		if (_plantedVegetable != null)
-		{
-			Destroy(_plantedVegetable);
-			_plantedVegetable = null;
-		}
+		Vegetable vegetableComponent = _plantedVegetable.GetComponent<Vegetable>();
+		vegetableComponent.VegetableHarvested += RestartPlot;
+
+		PlotButton.interactable = false;
 	}
 	private void WaterVegetable(int timeDecrease)
 	{
@@ -89,6 +80,11 @@ public class Plot : MonoBehaviour
 		CurrentState = PlotState.Empty;
 		PlotButton.interactable = false;
 		BloquedButton.SetActive(false);
+	}
+	private void RestartPlot(Vegetable harvestedVegetable)
+	{
+		CurrentState = PlotState.Empty;
+		PlotButton.interactable = false;
 	}
 
 	#endregion

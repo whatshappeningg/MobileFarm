@@ -5,8 +5,7 @@ public enum PlotState
 {
 	Empty,
 	Bloqued,
-	Planted,
-	ReadyToHarvest
+	Planted
 }
 public class GameController : MonoBehaviour
 {

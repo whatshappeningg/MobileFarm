@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class Vegetable : MonoBehaviour
 {
 	#region Properties
-	public PlotState State { get; set; }
 	public int Reward { get; set; }
 	public float TotalCooldownTime
 	{
@@ -24,7 +23,7 @@ public class Vegetable : MonoBehaviour
 
 		}
 	}
-	public static event Action<Vegetable> ReadyToHarvest;
+	public event Action<Vegetable> VegetableHarvested;
 
 	#endregion
 
@@ -43,8 +42,6 @@ public class Vegetable : MonoBehaviour
 	#region Unity Callbacks
 	void Awake()
 	{
-		State = PlotState.Planted;
-
 		_states = _spritesStates.Length;
 		TotalCooldownTime = _stateCooldownTime * _states;
 		_currentState = -1;
@@ -55,6 +52,7 @@ public class Vegetable : MonoBehaviour
 	}
 	void Start()
 	{
+		_button.onClick.AddListener(Harvest);
 		_image.sprite = _spritesStates[0];
 	}
 
@@ -63,6 +61,11 @@ public class Vegetable : MonoBehaviour
 		TotalCooldown();
 		StateCooldown();
 
+	}
+
+	void OnDestroy()
+	{
+		VegetableHarvested = null;
 	}
 	#endregion
 
@@ -111,11 +114,15 @@ public class Vegetable : MonoBehaviour
 		}
 		if (_currentState == _states - 1)
 		{
-			State = PlotState.ReadyToHarvest;
-			ReadyToHarvest?.Invoke(this);
 			_button.enabled = true;
 			return;
 		}
+	}
+
+	private void Harvest()
+	{
+		Destroy(gameObject);
+		VegetableHarvested?.Invoke(this);
 	}
 
 	#endregion
