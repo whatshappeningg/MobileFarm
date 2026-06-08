@@ -30,6 +30,7 @@ public class Vegetable : MonoBehaviour
 	#region Fields
 	private Image _image;
 	private Button _button;
+	[SerializeField] private ParticleSystem _harvestEffect;
 	[SerializeField] private int _states;
 	[SerializeField] private int _currentState;
 	[SerializeField] private Sprite[] _spritesStates;
@@ -48,6 +49,7 @@ public class Vegetable : MonoBehaviour
 
 		_image = GetComponent<Image>();
 		_button = GetComponent<Button>();
+		_harvestEffect = GetComponentInChildren<ParticleSystem>();
 		_button.enabled = false;
 	}
 	void Start()
@@ -121,8 +123,9 @@ public class Vegetable : MonoBehaviour
 
 	private void Harvest()
 	{
-		Destroy(gameObject);
+		_harvestEffect.Emit(10);
 		VegetableHarvested?.Invoke(this);
+		//Destroy(gameObject);
 	}
 
 	#endregion
