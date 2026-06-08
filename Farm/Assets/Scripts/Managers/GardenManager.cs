@@ -27,7 +27,6 @@ public class GardenManager : MonoBehaviour
 	#region Public Methods
 	public void SeedSelected()
 	{
-		Debug.Log("Seed selected in GardenManager");
 		ResetPlotButtons();
 		foreach (Plot plot in GardenPlots)
 		{
@@ -41,8 +40,8 @@ public class GardenManager : MonoBehaviour
 			}
 			if (plot.CurrentState == PlotState.Bloqued)
 			{
-				plot.BloquedButton.SetActive(true);
 				plot.PlotButton.interactable = false;
+				plot.BloquedButton.SetActive(true);
 			}
 		}
 	}
@@ -61,8 +60,8 @@ public class GardenManager : MonoBehaviour
 			}
 			if (plot.CurrentState == PlotState.Bloqued)
 			{
-				plot.BloquedButton.SetActive(true);
 				plot.PlotButton.interactable = false;
+				plot.BloquedButton.SetActive(true);
 			}
 		}
 	}
@@ -82,8 +81,8 @@ public class GardenManager : MonoBehaviour
 			}
 			if (plot.CurrentState == PlotState.Bloqued)
 			{
-				plot.BloquedButton.SetActive(true);
 				plot.PlotButton.interactable = true;
+				plot.BloquedButton.SetActive(true);
 			}
 		}
 	}
@@ -98,7 +97,6 @@ public class GardenManager : MonoBehaviour
 	#region Private Methods
 	private void ResetPlotButtons()
 	{
-		Debug.Log("Resetting plots in GardenManager");
 		foreach (Plot plot in GardenPlots)
 		{
 			plot.PlotButton.interactable = false;
@@ -110,6 +108,8 @@ public class GardenManager : MonoBehaviour
 	{
 		for (int i = 0; i < GardenPlots.Length; i++)
 		{
+			GardenPlots[i].PlotButton.interactable = false;
+
 			if (i < 45)
 				GardenPlots[i].CurrentState = PlotState.Bloqued;
 		}

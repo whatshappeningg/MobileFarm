@@ -12,8 +12,10 @@ public class PurchaseButton : MonoBehaviour
 		Fertilizer,
 		WateringCan
 	}
+
 	[field: SerializeField] public PurchaseType TypeOfPurchase;
-	//public event Action OnToggleSelected;
+	[field: SerializeField] public GameObject PrefabToSpawn;
+	[field: SerializeField] public int WateringTimeDecrease; // Solo para regadera
 
 	#endregion
 

@@ -67,6 +67,17 @@ public class Vegetable : MonoBehaviour
 	#endregion
 
 	#region Public Methods
+	public void Water(int timeDecrease)
+	{
+		TotalCooldownTime -= timeDecrease;
+		_currentCooldownTime -= timeDecrease;
+		if (_currentCooldownTime < 0)
+			_currentCooldownTime = 0;
+
+		if (TotalCooldownTime < 0)
+			TotalCooldownTime = 0;
+	}
+
 	#endregion
 
 	#region Private Methods

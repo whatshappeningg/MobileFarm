@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class ToggleSelectionManager : MonoBehaviour
 {
 	#region Properties
-	// public List<PurchaseButton> PurchaseButtons { get; set; } = new List<PurchaseButton>();
+	public PurchaseButton CurrentSelectedButton { get; set; }
 
 	#endregion
 
@@ -29,18 +29,18 @@ public class ToggleSelectionManager : MonoBehaviour
 	#region Public Methods
 	public void OnToggleSelected(PurchaseButton purchaseButton)
 	{
-		Debug.Log($"ToggleSelectionManager received toggle selection: {purchaseButton.TypeOfPurchase}");
-		if (purchaseButton.TypeOfPurchase == PurchaseButton.PurchaseType.Seed)
+		CurrentSelectedButton = purchaseButton;
+		if (CurrentSelectedButton.TypeOfPurchase == PurchaseButton.PurchaseType.Seed)
 		{
 			_gardenManager.SeedSelected();
 			return;
 		}
-		if (purchaseButton.TypeOfPurchase == PurchaseButton.PurchaseType.Fertilizer)
+		if (CurrentSelectedButton.TypeOfPurchase == PurchaseButton.PurchaseType.Fertilizer)
 		{
 			_gardenManager.FertilizerSelected();
 			return;
 		}
-		if (purchaseButton.TypeOfPurchase == PurchaseButton.PurchaseType.WateringCan)
+		if (CurrentSelectedButton.TypeOfPurchase == PurchaseButton.PurchaseType.WateringCan)
 		{
 			_gardenManager.WateringCanSelected();
 			return;
