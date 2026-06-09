@@ -125,7 +125,7 @@ public class Vegetable : MonoBehaviour
 	{
 		_harvestEffect.Emit(10);
 		VegetableHarvested?.Invoke(this);
-		//Destroy(gameObject);
+		Destroy(gameObject, _harvestEffect.main.duration);
 	}
 
 	#endregion
