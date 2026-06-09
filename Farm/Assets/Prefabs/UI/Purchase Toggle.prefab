@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 6861561327096893705}
   - component: {fileID: 5471927609773681868}
   m_Layer: 5
-  m_Name: Vegetable Image
+  m_Name: Item Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 6954600565894859884}
   - component: {fileID: 6866463993937886860}
   m_Layer: 5
-  m_Name: Vegetable Button
+  m_Name: Purchase Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -404,7 +404,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfPurchase: 0
-  _price: 2
+  PrefabToSpawn: {fileID: 0}
+  WateringTimeDecrease: 0
 --- !u!222 &6954600565894859884
 CanvasRenderer:
   m_ObjectHideFlags: 0

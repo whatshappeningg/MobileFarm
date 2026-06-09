@@ -3,7 +3,7 @@ using System;
 using TMPro;
 using UnityEngine.UI;
 
-public class PurchaseButton : MonoBehaviour
+public class PurchaseToggle : MonoBehaviour
 {
 	#region Properties
 	public enum PurchaseType
