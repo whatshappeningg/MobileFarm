@@ -34,8 +34,8 @@ public class Vegetable : MonoBehaviour
 	[SerializeField] private int _states;
 	[SerializeField] private int _currentState;
 	[SerializeField] private Sprite[] _spritesStates;
-	private float _currentCooldownTime = 5f;
-	[SerializeField] private float _stateCooldownTime;
+	[SerializeField] private float _currentCooldownTime = 5f;
+	private float _stateCooldownTime;
 	private float _totalCooldownTime;
 	[SerializeField] private int _reward;
 
