@@ -11,6 +11,7 @@ public class Plot : MonoBehaviour
 	#endregion
 
 	#region Fields
+	private GameController _gameController;
 	private GameObject _plantedVegetable;
 	private ToggleSelectionManager _toggleSelectionManager;
 	private PurchaseButton _currentSelectedPurchaseButton;
@@ -23,6 +24,7 @@ public class Plot : MonoBehaviour
 		CurrentState = PlotState.Empty;
 		PlotButton = GetComponent<Button>();
 		_toggleSelectionManager = FindObjectOfType<ToggleSelectionManager>();
+		_gameController = FindObjectOfType<GameController>();
 	}
 	void Start()
 	{
@@ -42,16 +44,19 @@ public class Plot : MonoBehaviour
 		if (_currentSelectedPurchaseButton.TypeOfPurchase == PurchaseButton.PurchaseType.Seed)
 		{
 			PlantVegetable(_currentSelectedPurchaseButton.PrefabToSpawn);
+			_gameController.RemoveMoney(_currentSelectedPurchaseButton.Price);
 			return;
 		}
 		if (_currentSelectedPurchaseButton.TypeOfPurchase == PurchaseButton.PurchaseType.WateringCan)
 		{
 			WaterVegetable(_currentSelectedPurchaseButton.WateringTimeDecrease);
+			_gameController.RemoveMoney(_currentSelectedPurchaseButton.Price);
 			return;
 		}
 		if (_currentSelectedPurchaseButton.TypeOfPurchase == PurchaseButton.PurchaseType.Fertilizer)
 		{
 			UnblockPlot();
+			_gameController.RemoveMoney(_currentSelectedPurchaseButton.Price);
 			return;
 		}
 

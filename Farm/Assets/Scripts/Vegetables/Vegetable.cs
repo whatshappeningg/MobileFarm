@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class Vegetable : MonoBehaviour
 {
 	#region Properties
-	public int Reward { get; set; }
 	public float TotalCooldownTime
 	{
 		get { return _totalCooldownTime; }
@@ -30,13 +29,16 @@ public class Vegetable : MonoBehaviour
 	#region Fields
 	private Image _image;
 	private Button _button;
-	[SerializeField] private ParticleSystem _harvestEffect;
+	private ParticleSystem _harvestEffect;
+	private GameController _gameController;
 	[SerializeField] private int _states;
 	[SerializeField] private int _currentState;
 	[SerializeField] private Sprite[] _spritesStates;
-	[SerializeField] private float _currentCooldownTime = 5f;
+	private float _currentCooldownTime = 5f;
 	[SerializeField] private float _stateCooldownTime;
-	[SerializeField] private float _totalCooldownTime;
+	private float _totalCooldownTime;
+	[SerializeField] private int _reward;
+
 
 	#endregion
 
@@ -50,6 +52,7 @@ public class Vegetable : MonoBehaviour
 		_image = GetComponent<Image>();
 		_button = GetComponent<Button>();
 		_harvestEffect = GetComponentInChildren<ParticleSystem>();
+		_gameController = FindObjectOfType<GameController>();
 		_button.enabled = false;
 	}
 	void Start()
@@ -123,6 +126,7 @@ public class Vegetable : MonoBehaviour
 
 	private void Harvest()
 	{
+		_gameController.AddMoney(_reward);
 		_harvestEffect.Emit(10);
 		VegetableHarvested?.Invoke(this);
 		Destroy(gameObject, _harvestEffect.main.duration);

@@ -60,15 +60,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a473cfbcf783f84c9fa80c12752b656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _harvestEffect: {fileID: 1863466242586825915, guid: 00c55e4a4b0ec774794f93c46f4d1de7, type: 3}
   _states: 0
   _currentState: 0
   _spritesStates:
   - {fileID: 21300018, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
   - {fileID: 21300094, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
-  _currentCooldownTime: -0.0032824902
   _stateCooldownTime: 3
-  _totalCooldownTime: 0
+  _reward: 3
 --- !u!114 &7037973242791447251
 MonoBehaviour:
   m_ObjectHideFlags: 0

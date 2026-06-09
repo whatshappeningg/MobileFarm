@@ -10,7 +10,6 @@ public enum PlotState
 public class GameController : MonoBehaviour
 {
 	#region Properties
-
 	public int Money
 	{
 		get { return _money; }
@@ -37,7 +36,7 @@ public class GameController : MonoBehaviour
 	#region Fields
 	private UIMoneyController _uiMoneyController;
 
-	[SerializeField] private int _money;
+	private int _money;
 
 	#endregion
 
@@ -46,16 +45,22 @@ public class GameController : MonoBehaviour
 	{
 		_uiMoneyController = FindObjectOfType<UIMoneyController>();
 
-		_uiMoneyController.UpdateMoneyDisplay(_money);
-	}
-
-	void Update()
-	{
+		Money = 100;
 
 	}
+
 	#endregion
 
 	#region Public Methods
+	public void AddMoney(int amount)
+	{
+		Money += amount;
+	}
+	public void RemoveMoney(int amount)
+	{
+		Money -= amount;
+	}
+
 	#endregion
 
 	#region Private Methods

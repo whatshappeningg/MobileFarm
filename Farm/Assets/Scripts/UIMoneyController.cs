@@ -24,6 +24,7 @@ public class UIMoneyController : MonoBehaviour
 	#region Public Methods
 	public void UpdateMoneyDisplay(int _currentMoney)
 	{
+		Debug.Log("Updating money display: " + _currentMoney);
 		_moneyText.text = _currentMoney.ToString();
 	}
 

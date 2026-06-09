@@ -16,6 +16,8 @@ public class PurchaseButton : MonoBehaviour
 	[field: SerializeField] public PurchaseType TypeOfPurchase;
 	[field: SerializeField] public GameObject PrefabToSpawn;
 	[field: SerializeField] public int WateringTimeDecrease; // Solo para regadera
+	[SerializeField] public int Price { get; set; }
+
 
 	#endregion
 
@@ -24,8 +26,6 @@ public class PurchaseButton : MonoBehaviour
 	private GameController _gameController;
 	private Toggle _purchaseToggle;
 	private TMP_Text _priceText;
-	private int _negativePrice; // Este valor es negativo
-	[SerializeField] private int _price;
 	private Color _defaultColor;
 	#endregion
 
@@ -38,20 +38,19 @@ public class PurchaseButton : MonoBehaviour
 		_priceText = GetComponentInChildren<TMP_Text>();
 
 		_purchaseToggle.onValueChanged.AddListener(ToggleSelected);
-		_negativePrice = -_price;
 
 	}
 
 	void Start()
 	{
-		_price = int.Parse(_priceText.text);
+		Price = int.Parse(_priceText.text);
 		_defaultColor = _priceText.color;
 
 	}
 
 	void Update()
 	{
-		if (_gameController.Money < _price)
+		if (_gameController.Money < Price)
 			OnCantPurchase();
 		else
 			OnCanPurchase();
