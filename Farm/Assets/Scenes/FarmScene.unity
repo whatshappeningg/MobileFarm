@@ -16094,6 +16094,10 @@ PrefabInstance:
       propertyPath: TypeOfPurchase
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7178347367527397025, guid: 412140e512246944b8142580f71895ee, type: 3}
+      propertyPath: WateringTimeDecrease
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8843895381824507708, guid: 412140e512246944b8142580f71895ee, type: 3}
       propertyPath: m_text
       value: 100

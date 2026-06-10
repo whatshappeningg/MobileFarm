@@ -5,17 +5,18 @@ using UnityEngine.UI;
 public class GardenManager : MonoBehaviour
 {
 	#region Properties
-	public Plot[] GardenPlots { get; set; } = new Plot[54];
 
 	#endregion
 
 	#region Fields
+	[SerializeField] private Plot[] _gardenPlots = new Plot[54];
+
 	#endregion
 
 	#region Unity Callbacks
 	void Awake()
 	{
-		GardenPlots = FindObjectsOfType<Plot>();
+		_gardenPlots = GetComponentsInChildren<Plot>();
 	}
 	void Start()
 	{
@@ -28,7 +29,7 @@ public class GardenManager : MonoBehaviour
 	public void SeedSelected()
 	{
 		ResetPlotButtons();
-		foreach (Plot plot in GardenPlots)
+		foreach (Plot plot in _gardenPlots)
 		{
 			if (plot.CurrentState == PlotState.Empty)
 			{
@@ -48,7 +49,7 @@ public class GardenManager : MonoBehaviour
 	public void WateringCanSelected()
 	{
 		ResetPlotButtons();
-		foreach (Plot plot in GardenPlots)
+		foreach (Plot plot in _gardenPlots)
 		{
 			if (plot.CurrentState == PlotState.Empty)
 			{
@@ -69,7 +70,7 @@ public class GardenManager : MonoBehaviour
 	public void FertilizerSelected()
 	{
 		ResetPlotButtons();
-		foreach (Plot plot in GardenPlots)
+		foreach (Plot plot in _gardenPlots)
 		{
 			if (plot.CurrentState == PlotState.Empty)
 			{
@@ -97,7 +98,7 @@ public class GardenManager : MonoBehaviour
 	#region Private Methods
 	private void ResetPlotButtons()
 	{
-		foreach (Plot plot in GardenPlots)
+		foreach (Plot plot in _gardenPlots)
 		{
 			plot.PlotButton.interactable = false;
 			plot.BloquedButton.SetActive(false);
@@ -106,12 +107,12 @@ public class GardenManager : MonoBehaviour
 
 	private void InitializeGardenPlots()
 	{
-		for (int i = 0; i < GardenPlots.Length; i++)
+		for (int i = 0; i < _gardenPlots.Length; i++)
 		{
-			GardenPlots[i].PlotButton.interactable = false;
+			_gardenPlots[i].PlotButton.interactable = false;
 
-			if (i < 45)
-				GardenPlots[i].CurrentState = PlotState.Bloqued;
+			if (i > 8)
+				_gardenPlots[i].CurrentState = PlotState.Bloqued;
 		}
 	}
 

@@ -54,13 +54,8 @@ public class PurchaseToggle : MonoBehaviour
 			OnCantPurchase();
 		else
 			OnCanPurchase();
-
-		// if (_purchaseToggle.isOn)
-		// {
-		// 	ToggleSelected();
-		// 	_purchaseToggle.isOn = false; // Resetea el toggle después de la compra
-		// }
 	}
+
 	#endregion
 
 	#region Public Methods
@@ -70,6 +65,7 @@ public class PurchaseToggle : MonoBehaviour
 	private void OnCantPurchase()
 	{
 		_priceText.color = Color.red;
+		_purchaseToggle.isOn = false;
 		_purchaseToggle.interactable = false;
 
 	}
