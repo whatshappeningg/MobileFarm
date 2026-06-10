@@ -62,13 +62,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _states: 0
   _currentState: 0
+  _currentCooldownTime: 5
+  _stateCooldownTime: 7
+  _reward: 30
   _spritesStates:
   - {fileID: 21300018, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
   - {fileID: 21300066, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
   - {fileID: 21300070, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
   - {fileID: 21300100, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
-  _stateCooldownTime: 7
-  _reward: 30
 --- !u!114 &4323715304362139451
 MonoBehaviour:
   m_ObjectHideFlags: 0

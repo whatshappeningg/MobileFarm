@@ -31,13 +31,15 @@ public class Vegetable : MonoBehaviour
 	private Button _button;
 	private ParticleSystem _harvestEffect;
 	private GameController _gameController;
-	[SerializeField] private int _states;
+	[Header("Visualization")]
+	private int _states;
 	[SerializeField] private int _currentState;
-	[SerializeField] private Sprite[] _spritesStates;
-	[SerializeField] private float _currentCooldownTime = 5f;
-	private float _stateCooldownTime;
 	private float _totalCooldownTime;
+	[SerializeField] private float _currentCooldownTime;
+	[Header("Configurable")]
+	[SerializeField] private float _stateCooldownTime;
 	[SerializeField] private int _reward;
+	[SerializeField] private Sprite[] _spritesStates;
 
 
 	#endregion
