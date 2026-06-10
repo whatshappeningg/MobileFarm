@@ -22,6 +22,7 @@ public class Vegetable : MonoBehaviour
 
 		}
 	}
+	public int Reward;
 	public event Action<Vegetable> VegetableHarvested;
 
 	#endregion
@@ -30,6 +31,7 @@ public class Vegetable : MonoBehaviour
 	private Image _image;
 	private Button _button;
 	private ParticleSystem _harvestEffect;
+	private UITextController _uiText;
 	private GameController _gameController;
 	[Header("Visualization")]
 	private int _states;
@@ -38,7 +40,6 @@ public class Vegetable : MonoBehaviour
 	[SerializeField] private float _currentCooldownTime;
 	[Header("Configurable")]
 	[SerializeField] private float _stateCooldownTime;
-	[SerializeField] private int _reward;
 	[SerializeField] private Sprite[] _spritesStates;
 
 
@@ -54,6 +55,7 @@ public class Vegetable : MonoBehaviour
 		_image = GetComponent<Image>();
 		_button = GetComponent<Button>();
 		_harvestEffect = GetComponentInChildren<ParticleSystem>();
+		_uiText = GetComponentInChildren<UITextController>(true);
 		_gameController = FindObjectOfType<GameController>();
 		_button.enabled = false;
 	}
@@ -128,7 +130,8 @@ public class Vegetable : MonoBehaviour
 
 	private void Harvest()
 	{
-		_gameController.AddMoney(_reward);
+		_gameController.AddMoney(Reward);
+		_uiText.gameObject.SetActive(true);
 		_harvestEffect.Emit(10);
 		VegetableHarvested?.Invoke(this);
 		Destroy(gameObject, _harvestEffect.main.duration);
