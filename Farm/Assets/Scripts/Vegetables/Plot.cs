@@ -11,6 +11,9 @@ public class Plot : MonoBehaviour
 	#endregion
 
 	#region Fields
+	[Header("Particles")]
+	[SerializeField] private ParticleSystem _wateringParticleSystem;
+	[SerializeField] private ParticleSystem _fertilizerParticleSystem;
 	private GameController _gameController;
 	private GameObject _plantedVegetable;
 	private ToggleSelectionManager _toggleSelectionManager;
@@ -23,8 +26,10 @@ public class Plot : MonoBehaviour
 	{
 		CurrentState = PlotState.Empty;
 		PlotButton = GetComponent<Button>();
+
 		_toggleSelectionManager = FindObjectOfType<ToggleSelectionManager>();
 		_gameController = FindObjectOfType<GameController>();
+
 	}
 	void Start()
 	{
@@ -49,7 +54,7 @@ public class Plot : MonoBehaviour
 		}
 		if (_currentSelectedPurchaseButton.TypeOfPurchase == PurchaseToggle.PurchaseType.WateringCan)
 		{
-			WaterVegetable(_currentSelectedPurchaseButton.WateringTimeDecrease);
+			WaterVegetable(_currentSelectedPurchaseButton);
 			_gameController.RemoveMoney(_currentSelectedPurchaseButton.Price);
 			return;
 		}
@@ -76,15 +81,19 @@ public class Plot : MonoBehaviour
 
 		PlotButton.interactable = false;
 	}
-	private void WaterVegetable(int timeDecrease)
+	private void WaterVegetable(PurchaseToggle wateringCan)
 	{
-		_plantedVegetable.GetComponent<Vegetable>().Water(timeDecrease);
+		_plantedVegetable.GetComponent<Vegetable>().Water(wateringCan.WateringTimeDecrease);
+		_wateringParticleSystem.Emit(10);
+
 	}
 	private void UnblockPlot()
 	{
 		CurrentState = PlotState.Empty;
 		PlotButton.interactable = false;
 		BloquedButton.SetActive(false);
+		_fertilizerParticleSystem.Emit(10);
+
 	}
 	private void RestartPlot(Vegetable harvestedVegetable)
 	{
