@@ -19,7 +19,7 @@ public class Plot : MonoBehaviour
 	[SerializeField] private AudioSource _wateringSound;
 	[SerializeField] private AudioSource _fertilizerSound;
 
-	private GameController _gameController;
+	private MoneyController _gameController;
 	private GameObject _plantedVegetable;
 	private ToggleSelectionManager _toggleSelectionManager;
 	private PurchaseToggle _currentSelectedPurchaseButton;
@@ -33,7 +33,7 @@ public class Plot : MonoBehaviour
 		PlotButton = GetComponent<Button>();
 
 		_toggleSelectionManager = FindObjectOfType<ToggleSelectionManager>();
-		_gameController = FindObjectOfType<GameController>();
+		_gameController = FindObjectOfType<MoneyController>();
 
 	}
 	void Start()

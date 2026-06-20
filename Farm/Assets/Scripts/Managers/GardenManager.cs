@@ -1,6 +1,11 @@
 using UnityEngine;
-using System;
-using UnityEngine.UI;
+
+public enum PlotState
+{
+	Empty,
+	Bloqued,
+	Planted
+}
 
 public class GardenManager : MonoBehaviour
 {

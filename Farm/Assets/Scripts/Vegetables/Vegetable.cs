@@ -34,7 +34,7 @@ public class Vegetable : MonoBehaviour
 	private ParticleSystem _harvestEffect;
 	private AudioSource _harvestingSound;
 	private UITextController _uiText;
-	private GameController _gameController;
+	private MoneyController _gameController;
 	[Header("Visualization")]
 	private int _states;
 	[SerializeField] private int _currentState;
@@ -59,7 +59,7 @@ public class Vegetable : MonoBehaviour
 		_harvestEffect = GetComponentInChildren<ParticleSystem>();
 		_harvestingSound = GetComponentInChildren<AudioSource>();
 		_uiText = GetComponentInChildren<UITextController>(true);
-		_gameController = FindObjectOfType<GameController>();
+		_gameController = FindObjectOfType<MoneyController>();
 		_button.enabled = false;
 	}
 	void Start()

@@ -1,13 +1,6 @@
 using UnityEngine;
-using System;
 
-public enum PlotState
-{
-	Empty,
-	Bloqued,
-	Planted
-}
-public class GameController : MonoBehaviour
+public class MoneyController : MonoBehaviour
 {
 	#region Properties
 	public int Money

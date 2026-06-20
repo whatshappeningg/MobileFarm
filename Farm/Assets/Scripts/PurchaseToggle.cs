@@ -23,7 +23,7 @@ public class PurchaseToggle : MonoBehaviour
 
 	#region Fields
 	private ToggleSelectionManager _toggleSelectionManager;
-	private GameController _gameController;
+	private MoneyController _gameController;
 	private Toggle _purchaseToggle;
 	private TMP_Text _priceText;
 	private Color _defaultColor;
@@ -33,7 +33,7 @@ public class PurchaseToggle : MonoBehaviour
 	void Awake()
 	{
 		_toggleSelectionManager = FindObjectOfType<ToggleSelectionManager>();
-		_gameController = FindObjectOfType<GameController>();
+		_gameController = FindObjectOfType<MoneyController>();
 		_purchaseToggle = GetComponentInChildren<Toggle>();
 		_priceText = GetComponentInChildren<TMP_Text>();
 
