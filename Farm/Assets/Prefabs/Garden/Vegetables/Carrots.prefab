@@ -414,6 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Reward: 3
+  Type: 0
   _currentState: 0
   _currentCooldownTime: 0
   _stateCooldownTime: 4
@@ -504,7 +505,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1863466242586825915, guid: 00c55e4a4b0ec774794f93c46f4d1de7, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4469724699950658068, guid: 00c55e4a4b0ec774794f93c46f4d1de7, type: 3}
       propertyPath: m_SortingLayer

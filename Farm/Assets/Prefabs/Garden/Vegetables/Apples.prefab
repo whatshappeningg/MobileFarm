@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Reward: 30
+  Type: 0
   _currentState: 0
   _currentCooldownTime: 5
   _stateCooldownTime: 7
@@ -366,7 +367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5595994534932945500
 RectTransform:
   m_ObjectHideFlags: 0
@@ -506,7 +507,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1543480310442910110, guid: 23c0fe1dfca0e6f41b9ad126cc058ac6, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3652543990593128241, guid: 23c0fe1dfca0e6f41b9ad126cc058ac6, type: 3}
       propertyPath: m_SortingLayer
