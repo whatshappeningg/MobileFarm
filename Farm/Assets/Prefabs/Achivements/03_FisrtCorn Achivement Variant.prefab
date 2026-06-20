@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 21300134, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
     - target: {fileID: 3076787082712699383, guid: e8ae99f663fdb5541953a713b7e755cf, type: 3}
       propertyPath: m_text
-      value: Plant your first 10 corn
+      value: Harvest your first 10 corn
       objectReference: {fileID: 0}
     - target: {fileID: 5546240706439677090, guid: e8ae99f663fdb5541953a713b7e755cf, type: 3}
       propertyPath: m_text
@@ -106,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6568978941885628288, guid: e8ae99f663fdb5541953a713b7e755cf, type: 3}
       propertyPath: m_Name
-      value: FisrtCorn Achivement Variant
+      value: 03_FisrtCorn Achivement Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

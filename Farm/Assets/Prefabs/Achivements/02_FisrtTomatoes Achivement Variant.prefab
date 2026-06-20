@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1125006691567197672, guid: 3892738ed6d1a804b847653bf11f4bfa, type: 3}
       propertyPath: m_Name
-      value: FisrtTomatoes Achivement Variant
+      value: 02_FisrtTomatoes Achivement Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1751148887679690442, guid: 3892738ed6d1a804b847653bf11f4bfa, type: 3}
       propertyPath: m_text
@@ -106,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 21300136, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
     - target: {fileID: 9081387324193387423, guid: 3892738ed6d1a804b847653bf11f4bfa, type: 3}
       propertyPath: m_text
-      value: Plant your first 10 tomatoes
+      value: Harvest your first 10 tomatoes
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 946608662071536751, guid: 2c24aa1fae2c2f449a684106e64ce6b0, type: 3}
       propertyPath: m_Name
-      value: FisrtApples Achivement Variant
+      value: 04_FisrtApples Achivement Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1851745738350131325, guid: 2c24aa1fae2c2f449a684106e64ce6b0, type: 3}
       propertyPath: m_Pivot.x
@@ -106,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 21300152, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
     - target: {fileID: 8987009575531053592, guid: 2c24aa1fae2c2f449a684106e64ce6b0, type: 3}
       propertyPath: m_text
-      value: Plant your first 10 apples
+      value: Harvest your first 10 apples
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -12,12 +12,14 @@ public class MoneyController : MonoBehaviour
 			{
 				_money = 0;
 				_uiMoneyController.UpdateMoneyDisplay(_money);
+				AchivementsManager.MoneyEarned = _money;
 				return;
 			}
 			if (value > 0)
 			{
 				_money = value;
 				_uiMoneyController.UpdateMoneyDisplay(_money);
+				AchivementsManager.MoneyEarned = _money;
 				return;
 			}
 
@@ -38,7 +40,7 @@ public class MoneyController : MonoBehaviour
 	{
 		_uiMoneyController = FindObjectOfType<UIMoneyController>();
 
-		Money = 100;
+		Money = 2;
 
 	}
 

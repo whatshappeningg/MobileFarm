@@ -8,6 +8,17 @@ using UnityEngine.UI;
 
 public class Vegetable : MonoBehaviour
 {
+	#region Enums
+	public enum VegetableType
+	{
+		Carrot,
+		Tomato,
+		Corn,
+		Apple
+	}
+
+	#endregion
+
 	#region Properties
 	public float TotalCooldownTime
 	{
@@ -24,6 +35,7 @@ public class Vegetable : MonoBehaviour
 		}
 	}
 	public int Reward;
+	public VegetableType Type;
 	public event Action<Vegetable> VegetableHarvested;
 
 	#endregion
@@ -33,7 +45,7 @@ public class Vegetable : MonoBehaviour
 	private Button _button;
 	private ParticleSystem _harvestEffect;
 	private AudioSource _harvestingSound;
-	private UITextController _uiText;
+	private UITextController _uiRewardText;
 	private MoneyController _gameController;
 	[Header("Visualization")]
 	private int _states;
@@ -58,7 +70,7 @@ public class Vegetable : MonoBehaviour
 		_button = GetComponent<Button>();
 		_harvestEffect = GetComponentInChildren<ParticleSystem>();
 		_harvestingSound = GetComponentInChildren<AudioSource>();
-		_uiText = GetComponentInChildren<UITextController>(true);
+		_uiRewardText = GetComponentInChildren<UITextController>(true);
 		_gameController = FindObjectOfType<MoneyController>();
 		_button.enabled = false;
 	}
@@ -133,12 +145,33 @@ public class Vegetable : MonoBehaviour
 
 	private void Harvest()
 	{
+		VegetableCount();
+
 		_gameController.AddMoney(Reward);
-		_uiText.gameObject.SetActive(true);
+		_uiRewardText.gameObject.SetActive(true);
 		_harvestEffect.Emit(10);
 		_harvestingSound.Play();
 		VegetableHarvested?.Invoke(this);
 		Destroy(gameObject, _harvestEffect.main.duration);
+	}
+
+	private void VegetableCount()
+	{
+		switch (Type)
+		{
+			case VegetableType.Carrot:
+				AchivementsManager.CarrotsHarvested++;
+				break;
+			case VegetableType.Tomato:
+				AchivementsManager.TomatoesHarvested++;
+				break;
+			case VegetableType.Corn:
+				AchivementsManager.CornHarvested++;
+				break;
+			case VegetableType.Apple:
+				AchivementsManager.ApplesHarvested++;
+				break;
+		}
 	}
 
 	#endregion

@@ -94,6 +94,8 @@ public class Plot : MonoBehaviour
 		_wateringParticleSystem.Emit(10);
 
 		_wateringSound.Play();
+
+		AchivementsManager.TimesWatered++;
 	}
 	private void UnblockPlot()
 	{
@@ -105,6 +107,8 @@ public class Plot : MonoBehaviour
 		_fertilizerSound.Play();
 
 		PlotButton.interactable = false;
+
+		AchivementsManager.TimesFertilized++;
 
 	}
 	private void RestartPlot(Vegetable harvestedVegetable)

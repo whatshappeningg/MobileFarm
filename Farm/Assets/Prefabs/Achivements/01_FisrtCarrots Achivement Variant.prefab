@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2564442033289263187, guid: 01918003194459e418684b49eeedaa17, type: 3}
       propertyPath: m_Name
-      value: FisrtCarrots Achivement Variant
+      value: 01_FisrtCarrots Achivement Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3767047179654546289, guid: 01918003194459e418684b49eeedaa17, type: 3}
       propertyPath: m_text
@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5912655075050624548, guid: 01918003194459e418684b49eeedaa17, type: 3}
       propertyPath: m_text
-      value: Plant your first 10 carrots
+      value: Harvest your first 10 carrots
       objectReference: {fileID: 0}
     - target: {fileID: 6890847475157435320, guid: 01918003194459e418684b49eeedaa17, type: 3}
       propertyPath: m_Sprite
