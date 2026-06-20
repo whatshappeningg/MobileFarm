@@ -14,6 +14,11 @@ public class Plot : MonoBehaviour
 	[Header("Particles")]
 	[SerializeField] private ParticleSystem _wateringParticleSystem;
 	[SerializeField] private ParticleSystem _fertilizerParticleSystem;
+	[Header("Sounds")]
+	[SerializeField] private AudioSource _plantingSound;
+	[SerializeField] private AudioSource _wateringSound;
+	[SerializeField] private AudioSource _fertilizerSound;
+
 	private GameController _gameController;
 	private GameObject _plantedVegetable;
 	private ToggleSelectionManager _toggleSelectionManager;
@@ -79,6 +84,8 @@ public class Plot : MonoBehaviour
 		Vegetable vegetableComponent = _plantedVegetable.GetComponent<Vegetable>();
 		vegetableComponent.VegetableHarvested += RestartPlot;
 
+		_plantingSound.Play();
+
 		PlotButton.interactable = false;
 	}
 	private void WaterVegetable(PurchaseToggle wateringCan)
@@ -86,13 +93,18 @@ public class Plot : MonoBehaviour
 		_plantedVegetable.GetComponent<Vegetable>().Water(wateringCan.WateringTimeDecrease);
 		_wateringParticleSystem.Emit(10);
 
+		_wateringSound.Play();
 	}
 	private void UnblockPlot()
 	{
 		CurrentState = PlotState.Empty;
-		PlotButton.interactable = false;
 		BloquedButton.SetActive(false);
+
 		_fertilizerParticleSystem.Emit(10);
+
+		_fertilizerSound.Play();
+
+		PlotButton.interactable = false;
 
 	}
 	private void RestartPlot(Vegetable harvestedVegetable)

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 [RequireComponent(typeof(Button))]
 
+
 public class Vegetable : MonoBehaviour
 {
 	#region Properties
@@ -31,6 +32,7 @@ public class Vegetable : MonoBehaviour
 	private Image _image;
 	private Button _button;
 	private ParticleSystem _harvestEffect;
+	private AudioSource _harvestingSound;
 	private UITextController _uiText;
 	private GameController _gameController;
 	[Header("Visualization")]
@@ -55,6 +57,7 @@ public class Vegetable : MonoBehaviour
 		_image = GetComponent<Image>();
 		_button = GetComponent<Button>();
 		_harvestEffect = GetComponentInChildren<ParticleSystem>();
+		_harvestingSound = GetComponentInChildren<AudioSource>();
 		_uiText = GetComponentInChildren<UITextController>(true);
 		_gameController = FindObjectOfType<GameController>();
 		_button.enabled = false;
@@ -133,6 +136,7 @@ public class Vegetable : MonoBehaviour
 		_gameController.AddMoney(Reward);
 		_uiText.gameObject.SetActive(true);
 		_harvestEffect.Emit(10);
+		_harvestingSound.Play();
 		VegetableHarvested?.Invoke(this);
 		Destroy(gameObject, _harvestEffect.main.duration);
 	}
