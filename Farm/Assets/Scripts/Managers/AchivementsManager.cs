@@ -1,20 +1,25 @@
 using UnityEngine;
 using DG.Tweening;
 
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Canvas))]
+
+
 public class AchivementsManager : MonoBehaviour
 {
 	#region Properties
-	[field: SerializeField] public static int CarrotsHarvested { get; set; } = 0;
-	[field: SerializeField] public static int TomatoesHarvested { get; set; } = 0;
-	[field: SerializeField] public static int CornHarvested { get; set; } = 0;
-	[field: SerializeField] public static int ApplesHarvested { get; set; } = 0;
-	[field: SerializeField] public static int MoneyEarned { get; set; } = 0;
-	[field: SerializeField] public static int TimesFertilized { get; set; } = 0;
-	[field: SerializeField] public static int TimesWatered { get; set; } = 0;
+	public static int CarrotsHarvested = 0;
+	public static int TomatoesHarvested = 0;
+	public static int CornHarvested = 0;
+	public static int ApplesHarvested = 0;
+	public static int MoneyEarned = 0;
+	public static int TimesFertilized = 0;
+	public static int TimesWatered = 0;
 
 	#endregion
 
 	#region Fields
+	private AudioSource _achivementUnlockedSound;
 	[SerializeField] private GameObject _01Achivement;
 	private bool _01AchivementUnlocked = false;
 	[SerializeField] private GameObject _02Achivement;
@@ -45,10 +50,15 @@ public class AchivementsManager : MonoBehaviour
 	#endregion
 
 	#region Unity Callbacks
+	void Awake()
+	{
+		_achivementUnlockedSound = GetComponent<AudioSource>();
+	}
 
 	void Update()
 	{
 		CheckAchivements();
+		print("Fertilizer: " + TimesFertilized);
 
 	}
 	#endregion
@@ -60,7 +70,7 @@ public class AchivementsManager : MonoBehaviour
 	private void CheckAchivements()
 	{
 		// Planting Achivements
-		if (!_01AchivementUnlocked && CarrotsHarvested == 10)
+		if (!_01AchivementUnlocked && CarrotsHarvested == 2)
 		{
 			ShowAchivement(_01Achivement);
 			_01AchivementUnlocked = true;
@@ -131,8 +141,7 @@ public class AchivementsManager : MonoBehaviour
 	}
 	private void ShowAchivement(GameObject achivement)
 	{
-		// sound 
-
+		_achivementUnlockedSound.Play();
 		GameObject ObjectAchivement = Instantiate(achivement, transform.position, Quaternion.identity, transform);
 
 		Sequence sequence = DOTween.Sequence();
