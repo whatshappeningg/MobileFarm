@@ -36,7 +36,7 @@ public class Vegetable : MonoBehaviour
 	}
 	public int Reward;
 	public VegetableType Type;
-	public event Action<Vegetable> VegetableHarvested;
+	public event Action VegetableHarvested;
 
 	#endregion
 
@@ -147,7 +147,7 @@ public class Vegetable : MonoBehaviour
 		_uiRewardText.gameObject.SetActive(true);
 		_harvestEffect.Emit(10);
 		_harvestingSound.Play();
-		VegetableHarvested?.Invoke(this);
+		VegetableHarvested?.Invoke();
 		Destroy(gameObject, _harvestEffect.main.duration);
 	}
 	private void VegetableCount()
