@@ -8,6 +8,7 @@ public class Plot : MonoBehaviour
 	[field: SerializeField] public PlotState CurrentState { get; set; }
 	public Button PlotButton { get; set; }
 	[field: SerializeField] public GameObject BloquedButton { get; set; }
+
 	#endregion
 
 	#region Fields
@@ -19,7 +20,7 @@ public class Plot : MonoBehaviour
 	[SerializeField] private AudioSource _wateringSound;
 	[SerializeField] private AudioSource _fertilizerSound;
 
-	private MoneyController _gameController;
+	private MoneyController _moneyController;
 	private GameObject _plantedVegetable;
 	private ToggleSelectionManager _toggleSelectionManager;
 	private PurchaseToggle _currentSelectedPurchaseButton;
@@ -33,14 +34,14 @@ public class Plot : MonoBehaviour
 		PlotButton = GetComponent<Button>();
 
 		_toggleSelectionManager = FindObjectOfType<ToggleSelectionManager>();
-		_gameController = FindObjectOfType<MoneyController>();
-
+		_moneyController = FindObjectOfType<MoneyController>();
 	}
 	void Start()
 	{
 		PlotButton.onClick.AddListener(OnPlotButtonClicked);
 
 	}
+
 	#endregion
 
 	#region Public Methods
@@ -54,22 +55,21 @@ public class Plot : MonoBehaviour
 		if (_currentSelectedPurchaseButton.TypeOfPurchase == PurchaseToggle.PurchaseType.Seed)
 		{
 			PlantVegetable(_currentSelectedPurchaseButton.PrefabToSpawn);
-			_gameController.RemoveMoney(_currentSelectedPurchaseButton.Price);
+			_moneyController.RemoveMoney(_currentSelectedPurchaseButton.Price);
 			return;
 		}
 		if (_currentSelectedPurchaseButton.TypeOfPurchase == PurchaseToggle.PurchaseType.WateringCan)
 		{
 			WaterVegetable(_currentSelectedPurchaseButton);
-			_gameController.RemoveMoney(_currentSelectedPurchaseButton.Price);
+			_moneyController.RemoveMoney(_currentSelectedPurchaseButton.Price);
 			return;
 		}
 		if (_currentSelectedPurchaseButton.TypeOfPurchase == PurchaseToggle.PurchaseType.Fertilizer)
 		{
 			UnblockPlot();
-			_gameController.RemoveMoney(_currentSelectedPurchaseButton.Price);
+			_moneyController.RemoveMoney(_currentSelectedPurchaseButton.Price);
 			return;
 		}
-
 	}
 
 	#endregion
@@ -109,9 +109,8 @@ public class Plot : MonoBehaviour
 		PlotButton.interactable = false;
 
 		AchivementsManager.TimesFertilized++;
-
 	}
-	private void RestartPlot(Vegetable harvestedVegetable)
+	private void RestartPlot()
 	{
 		CurrentState = PlotState.Empty;
 		PlotButton.interactable = false;

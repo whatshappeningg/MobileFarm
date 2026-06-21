@@ -11,6 +11,7 @@ public class ToggleSelectionManager : MonoBehaviour
 
 	#region Fields
 	private GardenManager _gardenManager;
+
 	#endregion
 
 	#region Unity Callbacks
@@ -20,10 +21,6 @@ public class ToggleSelectionManager : MonoBehaviour
 
 	}
 
-	void Update()
-	{
-
-	}
 	#endregion
 
 	#region Public Methods
@@ -50,9 +47,7 @@ public class ToggleSelectionManager : MonoBehaviour
 	{
 		_gardenManager.ResetSelection();
 	}
-	#endregion
 
-	#region Private Methods
 	#endregion
 
 }

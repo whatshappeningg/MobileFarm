@@ -46,7 +46,7 @@ public class Vegetable : MonoBehaviour
 	private ParticleSystem _harvestEffect;
 	private AudioSource _harvestingSound;
 	private UITextController _uiRewardText;
-	private MoneyController _gameController;
+	private MoneyController _moneyController;
 	[Header("Visualization")]
 	private int _states;
 	[SerializeField] private int _currentState;
@@ -55,7 +55,6 @@ public class Vegetable : MonoBehaviour
 	[Header("Configurable")]
 	[SerializeField] private float _stateCooldownTime;
 	[SerializeField] private Sprite[] _spritesStates;
-
 
 	#endregion
 
@@ -71,7 +70,7 @@ public class Vegetable : MonoBehaviour
 		_harvestEffect = GetComponentInChildren<ParticleSystem>();
 		_harvestingSound = GetComponentInChildren<AudioSource>();
 		_uiRewardText = GetComponentInChildren<UITextController>(true);
-		_gameController = FindObjectOfType<MoneyController>();
+		_moneyController = FindObjectOfType<MoneyController>();
 		_button.enabled = false;
 	}
 	void Start()
@@ -79,18 +78,16 @@ public class Vegetable : MonoBehaviour
 		_button.onClick.AddListener(Harvest);
 		_image.sprite = _spritesStates[0];
 	}
-
 	void Update()
 	{
 		TotalCooldown();
 		StateCooldown();
-
 	}
-
 	void OnDestroy()
 	{
 		VegetableHarvested = null;
 	}
+
 	#endregion
 
 	#region Public Methods
@@ -142,19 +139,17 @@ public class Vegetable : MonoBehaviour
 			return;
 		}
 	}
-
 	private void Harvest()
 	{
 		VegetableCount();
 
-		_gameController.AddMoney(Reward);
+		_moneyController.AddMoney(Reward);
 		_uiRewardText.gameObject.SetActive(true);
 		_harvestEffect.Emit(10);
 		_harvestingSound.Play();
 		VegetableHarvested?.Invoke(this);
 		Destroy(gameObject, _harvestEffect.main.duration);
 	}
-
 	private void VegetableCount()
 	{
 		switch (Type)

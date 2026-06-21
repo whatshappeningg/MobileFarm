@@ -54,23 +54,20 @@ public class AchivementsManager : MonoBehaviour
 	{
 		_achivementUnlockedSound = GetComponent<AudioSource>();
 	}
-
 	void Update()
 	{
 		CheckAchivements();
 		print("Fertilizer: " + TimesFertilized);
 
 	}
-	#endregion
 
-	#region Public Methods
 	#endregion
 
 	#region Private Methods
 	private void CheckAchivements()
 	{
 		// Planting Achivements
-		if (!_01AchivementUnlocked && CarrotsHarvested == 2)
+		if (!_01AchivementUnlocked && CarrotsHarvested == 10)
 		{
 			ShowAchivement(_01Achivement);
 			_01AchivementUnlocked = true;
@@ -149,10 +146,8 @@ public class AchivementsManager : MonoBehaviour
 		sequence.AppendInterval(4f);
 		sequence.Append(ObjectAchivement.transform.DOMoveY(ObjectAchivement.transform.position.y + 1, 1f));
 		sequence.OnComplete(() => Destroy(ObjectAchivement));
-
 	}
 
 	#endregion
-
 
 }
