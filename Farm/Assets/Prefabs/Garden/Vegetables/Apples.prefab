@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Reward: 30
-  Type: 0
+  Type: 3
   _currentState: 0
   _currentCooldownTime: 5
   _stateCooldownTime: 7

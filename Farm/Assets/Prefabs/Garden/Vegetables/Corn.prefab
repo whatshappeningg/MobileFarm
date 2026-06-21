@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Reward: 15
-  Type: 0
+  Type: 2
   _currentState: 0
   _currentCooldownTime: 0
   _stateCooldownTime: 6
