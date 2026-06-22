@@ -6,9 +6,6 @@ using DG.Tweening;
 
 public class AnimalInteraction : MonoBehaviour
 {
-	#region Properties
-	#endregion
-
 	#region Fields
 	private Button _interactionButton;
 	private GameObject _emoji;
@@ -26,13 +23,6 @@ public class AnimalInteraction : MonoBehaviour
 		_interactionButton.onClick.AddListener(OnButtonClicked);
 	}
 
-	void Update()
-	{
-
-	}
-	#endregion
-
-	#region Public Methods
 	#endregion
 
 	#region Private Methods
@@ -40,13 +30,14 @@ public class AnimalInteraction : MonoBehaviour
 	{
 		Debug.Log("Animal interacted with!");
 		_emoji.SetActive(true);
+		_emoji.transform.localPosition = new Vector2(0.01f, 0.15f);
 
 		Sequence sequence = DOTween.Sequence();
-		sequence.Append(_emoji.transform.DOMoveY(_emoji.transform.position.y + 0.4f, 0.5f));
-		sequence.AppendInterval(0.5f);
+		sequence.Append(_emoji.transform.DOMoveY(_emoji.transform.position.y + 0.2f, 0.5f));
+		sequence.AppendInterval(0.3f);
 		sequence.OnComplete(() => _emoji.SetActive(false));
-
 	}
+
 	#endregion
 
 }
