@@ -40,7 +40,7 @@ public class MoneyController : MonoBehaviour
 	{
 		_uiMoneyController = FindObjectOfType<UIMoneyController>();
 
-		Money = 120;
+		Money = 2;
 
 	}
 
