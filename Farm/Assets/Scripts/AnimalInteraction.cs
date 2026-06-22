@@ -28,7 +28,6 @@ public class AnimalInteraction : MonoBehaviour
 	#region Private Methods
 	private void OnButtonClicked()
 	{
-		Debug.Log("Animal interacted with!");
 		_emoji.SetActive(true);
 		_emoji.transform.localPosition = new Vector2(0.01f, 0.15f);
 

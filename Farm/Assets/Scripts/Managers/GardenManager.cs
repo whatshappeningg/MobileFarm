@@ -9,10 +9,6 @@ public enum PlotState
 
 public class GardenManager : MonoBehaviour
 {
-	#region Properties
-
-	#endregion
-
 	#region Fields
 	[SerializeField] private Plot[] _gardenPlots = new Plot[54];
 
@@ -71,7 +67,6 @@ public class GardenManager : MonoBehaviour
 			}
 		}
 	}
-
 	public void FertilizerSelected()
 	{
 		ResetPlotButtons();
@@ -92,7 +87,6 @@ public class GardenManager : MonoBehaviour
 			}
 		}
 	}
-
 	public void ResetSelection()
 	{
 		ResetPlotButtons();
@@ -109,7 +103,6 @@ public class GardenManager : MonoBehaviour
 			plot.BloquedButton.SetActive(false);
 		}
 	}
-
 	private void InitializeGardenPlots()
 	{
 		for (int i = 0; i < _gardenPlots.Length; i++)

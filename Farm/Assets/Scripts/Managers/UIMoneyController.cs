@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 using TMPro;
 
 public class UIMoneyController : MonoBehaviour
@@ -20,7 +19,6 @@ public class UIMoneyController : MonoBehaviour
 	#region Public Methods
 	public void UpdateMoneyDisplay(int _currentMoney)
 	{
-		Debug.Log("Updating money display: " + _currentMoney);
 		_moneyText.text = _currentMoney.ToString();
 	}
 
